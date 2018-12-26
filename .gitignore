@@ -1,0 +1,6 @@
+*.pyc
+*.db
+Vagrantfile
+*.sh
+*.log
+instance
