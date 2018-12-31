@@ -1,8 +1,8 @@
-from app.models import Category, Item, User, db
-
+from app.models.models import Category, Item, User, db
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from loremipsum import get_sentences
+from app import app
 
 lorem = str((get_sentences(1)))
 
@@ -67,3 +67,7 @@ db.session.add(item)
 db.session.commit()
 
 print ('Categories and items added to database!')
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8000, debug=True)
+    print('running on local server port 8000')
