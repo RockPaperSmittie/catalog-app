@@ -14,3 +14,11 @@ def show_items(category_name):
     category = session.query(Category).filter_by(name=category_name).one_or_none()
     items = session.query(Item).filter_by(category=category).all()
     return render_template('show_item.html', categories=categories, category=category, items=items)
+
+
+@item.route("/catalog/<path:category_name>/<path:item_style")
+def show_item(category_name, item_style):
+    """Show a category and all of his items."""
+    category = session.query(Category).filter_by(name=category_name).one_or_none()
+    item = session.query(Item).filter_by(category=category, style=item_style).one_or_none()
+    return render_template('item_detail.html', category=category, item=item)
