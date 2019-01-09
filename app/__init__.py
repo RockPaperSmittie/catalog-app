@@ -1,16 +1,22 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from views.category import category
-from app.models.models import Category, Item, User
-
-app = Flask(__name__, instance_relative_config=True)
-db = SQLAlchemy(app)
-
-app.config.from_object('config')
-app.config.from_pyfile('config.py')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.register_blueprint(category)
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8000, debug=True)
-    print('running on local server port 8000')
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+ 
+app = Flask(__name__)
+ 
+engine = create_engine('sqlite:///catalog.db')
+ 
+# create a Declarative base class which stores the classes representing tables
+Base = declarative_base()
+Base.metadata.reflect(bind=engine)
+ 
+# create a configured "Session" class
+Session = sessionmaker(bind=engine)
+ 
+# create a Session
+session = Session()
+ 
+# create all tables that don't yet exist
+def create_tables():
+    Base.metadata.create_all(engine)

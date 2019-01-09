@@ -1,0 +1,16 @@
+
+{% extends "index.html" %}
+{% block content %}
+
+    <h1 class = 'cat-head'>
+        {{category.name}}
+    </h1>
+
+    {%for i in items%}
+        <ul>
+    
+            <li>{{i.style}}</li>
+    
+        </ul>
+    {% endfor %}
+{% endblock %}

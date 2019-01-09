@@ -1,15 +1,17 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
+from sqlalchemy.orm import relationship, backref
+from sqlalchemy import UniqueConstraint
+from app import Base
 
-app = Flask(__name__, instance_relative_config=True)
-db = SQLAlchemy(app)
 
-class Category(db.Model):
+class Category(Base):
     __tablename__ = 'category'
+    __table_args__ = {'extend_existing': True}
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(250), nullable=False)
-    description = db.Column(db.String(250), nullable=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(250), nullable=False)
+    description = Column(String(250), nullable=False)
 
     @property
     def serialize(self):
@@ -19,14 +21,16 @@ class Category(db.Model):
             'description': self.description
         }
 
-class Item(db.Model):
+class Item(Base):
     __tablename__ = 'item'
+    __table_args__ = {'extend_existing': True}
     
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
-    category = db.relationship(Category)
-    style = db.Column(db.String(250), nullable=False)
-    description = db.Column(db.String(250), nullable=False)
+    
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    category_id = Column(Integer, ForeignKey('category.id'))
+    category = relationship(Category, backref=backref('items', cascade='all, delete'))
+    style = Column(String(250), nullable=False)
+    description = Column(String(250), nullable=False)
 
     @property
     def serialize(self):
@@ -37,14 +41,10 @@ class Item(db.Model):
             'description' : self.description
         }
 
-class User(db.Model):
+class User(Base):
     __tablename__ = 'user'
+    __table_args__ = {'extend_existing': True}
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(250), nullable=False)
-    email = db.Column(db.String(250), nullable=False)
-
-
-
-
-
+    id = Column(Integer, primary_key=True)
+    name = Column(String(250), nullable=False)
+    email = Column(String(250), nullable=False)
