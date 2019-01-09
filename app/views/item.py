@@ -16,7 +16,7 @@ def show_items(category_name):
     return render_template('show_item.html', categories=categories, category=category, items=items)
 
 
-@item.route("/catalog/<path:category_name>/<path:item_style")
+@item.route("/catalog/<path:category_name>/<path:item_style>")
 def show_item(category_name, item_style):
     """Show a category and all of his items."""
     category = session.query(Category).filter_by(name=category_name).one_or_none()
