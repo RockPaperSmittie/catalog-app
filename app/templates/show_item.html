@@ -9,7 +9,7 @@
     {%for i in items%}
         <ul>
     
-           <a href="{{url_for('item.show_item', category_name=i.category.name, item_style=i.style)}}"><li>{{i.style}}</li></a>
+           <a href="{{url_for('item.show_item', category_name=i.category.name, item_style=i.style)}}"><li class = "col-sm-4">{{i.style}}</li></a>
     
         </ul>
     {% endfor %}

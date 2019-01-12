@@ -1,1 +1,17 @@
-<h1>Hi!</h1>
+{% include 'partials/head.html' %}
+{% include 'partials/navbar.html' %}
+
+{% block content %}
+
+<div>
+    <h1 class = 'cat-head'>
+        {{item.style}}
+    </h1>
+</div>
+<div>
+    <p class = 'item-desc'>{{item.description}}</p>
+</div>
+
+
+{% endblock %}
+{% include 'partials/footer.html' %}

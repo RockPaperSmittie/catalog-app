@@ -17,19 +17,20 @@
     
   </head>
   <body>
-    <h1>Hi there!</h1>
-
-    <nav class="navbar">
-      <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="{{url_for('category.show_categories')}}">Catalog App</a>
         </div>
 
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign In</a></li>
+        <ul class="nav navbar left">
           <li><a href="{{url_for('category.show_categories')}}">Categories</a></li>
           <li><a href="#">About</a></li>
         </ul>
+        <ul class="nav navbar navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
       </div>
     </nav>
 
@@ -52,29 +53,8 @@
     </div>
     </body>
     
-    <div class = "row text-center">
-      <a href="#" class="btn btn-primary">View All Courses</a>
-    </div>
     <footer class = "container">
-      <div class="row">
-        <p class="col-sm-4">
-          codebrainery.io
-        </p>
-        <ul class="col-sm-8 text-right">
-          <li class="col-sm-1">
-            <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/facebook-grey.svg">
-          </li>
-          <li class="col-sm-1">
-            <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/twitter-grey.svg">
-          </li>
-          <li class="col-sm-1">
-            <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/instagram-grey.svg">
-          </li>
-            <li class="col-sm-1">
-              <img src="https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/medium-grey.svg">
-  </li>
-        </ul>
-      </div>
+
     </footer>
 
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

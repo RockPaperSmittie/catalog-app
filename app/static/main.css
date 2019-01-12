@@ -10,6 +10,26 @@ ul {
   list-style: none;
 }
 
+li {
+  float: left;
+}
+
+li a {
+  display: inline-block;
+  color: #00d4fac7;
+  text-align: center;
+  padding: 5px 7px;
+  text-decoration: none;
+}
+
+.cat-head {
+  text-align: center;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
 figure img {
   width: 100%;
   height: auto;
@@ -58,10 +78,16 @@ header .row {
   align-items: center;
 }
 
-.col-sm-4 p {
+.col-sm-4 {
   margin: 25px 20px 15px;
   min-width: 60px;
-  padding: 1px;
+  padding: 3px;
+  border: black, 2px, solid
+}
+
+.item-desc {
+  text-align: center;
+  padding: 100px;
 }
 
 section.container .row {
@@ -102,16 +128,31 @@ section.container .row {
 }
 
 .col-sm-1 img {
+  float: right;
   min-width: 32px;
   min-height: 33px;
 }
 
 /* Bootstrap overrides */
 
+.row {
+  text-align: center;
+}
+
+.container {
+  display: center;
+}
+
+.left{
+  justify-content: left;
+}
+
 .navbar, .navbar-default {
   margin: 0;
   background-color: #FFFFFF;
   border: none;
+  text-align: center;
+  /* display: inline-flex */
 }
 
 .btn-default,
@@ -119,7 +160,7 @@ section.container .row {
 .btn-default:active {
   border: none;
   background: #FFFFFF;
-}
+} */
 
 .dropdown-menu {
   left: 22px;
