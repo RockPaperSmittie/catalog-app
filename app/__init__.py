@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
  
 app = Flask(__name__)
  
-engine = create_engine('sqlite:///catalog.db')
+engine = create_engine('sqlite:///catalog.db', echo=True)
  
 # create a Declarative base class which stores the classes representing tables
 Base = declarative_base()

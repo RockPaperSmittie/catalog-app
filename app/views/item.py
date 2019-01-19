@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, redirect
 from sqlalchemy import asc, desc
 from app.models.models import Category
 from app.models.models import Item
 from app import session
+# from app.forms import NewItemForm
 
 item = Blueprint('item', __name__)
 
@@ -22,3 +23,28 @@ def show_item(category_name, item_style):
     category = session.query(Category).filter_by(name=category_name).one_or_none()
     item = session.query(Item).filter_by(category=category, style=item_style).one_or_none()
     return render_template('item_detail.html', category=category, item=item)
+
+
+@item.route('/catalog/<path:category_name>/items/new', methods=['GET', 'POST'])
+def new_item(category_name):
+    '''
+    GET: Display Add Form
+    POST: Create New Item
+    '''
+    category = session.query(Category).filter_by(name=category_name).one_or_none()
+    
+
+    if request.method == 'POST':
+        style = request.form['style'].strip()
+        description = request.form['description'].strip()
+
+        newItem = Item(style=style, description=description, category = category )
+
+        session.add(newItem)
+        session.commit()
+        print("session committed!")
+
+        return redirect('/catalog')
+    else:
+        return render_template('new_item.html', category=category)
+

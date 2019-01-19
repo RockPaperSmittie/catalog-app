@@ -12,6 +12,12 @@ class Category(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(250), nullable=False)
     description = Column(String(250), nullable=False)
+    
+    # def __init__( self, id, name, description):
+    #    self.name = name
+    #    self.id = id
+    #    self.description = description
+       
 
     @property
     def serialize(self):
@@ -31,6 +37,13 @@ class Item(Base):
     category = relationship(Category, backref=backref('items', cascade='all, delete'))
     style = Column(String(250), nullable=False)
     description = Column(String(250), nullable=False)
+
+    # @classmethod
+    # def __repr__(self):
+    #     return ("<Item: id={:d}, style='{}',"
+    #             " category_id={:d}>".format(
+    #                 self.id, self.style, 
+    #                 self.category_id))
 
     @property
     def serialize(self):
