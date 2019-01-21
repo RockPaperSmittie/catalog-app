@@ -66,4 +66,18 @@ def edit_item(category_name, item_style):
     else:
         return render_template('edit_item.html', category = category, item = item)
 
+@item.route('/catalog/<path:category_name>/<path:item_style>/edit', methods=['GET','POST'])
+def delete_item(category_name, item_style):
+
+     category = session.query(Category).filter_by(name=category_name).one_or_none()
+    item = session.query(Item).filter_by(style = item_style).one_or_none()
+
+    if request.method == 'POST':
+        session.delete(item)
+        session.commit()
+        return redirect('/catalog')
+    else:
+        return render_template('delete_item.html', category = category, item = item)
+
+
 
