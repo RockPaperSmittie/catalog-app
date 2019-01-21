@@ -9,9 +9,9 @@
     <div>
     {%for i in items%}
         <ul>
-           <a href="{{url_for('item.show_item', category_name=i.category.name, item_style=i.style)}}">
-               <li class = "col-sm-4">{{i.style}}</li>
-            </a>
+            <li class = "col-sm-4"><a href="{{url_for('item.show_item', category_name=i.category.name, item_style=i.style)}}">{{i.style}}</a></li>
+
+             
         </ul>
     </div>
     {% endfor %}

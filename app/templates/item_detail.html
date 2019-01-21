@@ -11,7 +11,10 @@
 <div>
     <p class = 'item-desc'>{{item.description}}</p>
 </div>
-
+<div>
+    <a class = "btn-group" href="{{url_for('item.edit_item', category_name = category.name, item_style = item.style)}}">Edit</a>
+    <a  class = "btn-group" href='#'>Delete</a>
+</div>
 
 {% endblock %}
 {% include 'partials/footer.html' %}

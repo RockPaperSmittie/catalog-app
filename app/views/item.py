@@ -48,3 +48,22 @@ def new_item(category_name):
     else:
         return render_template('new_item.html', category=category)
 
+@item.route('/catalog/<path:category_name>/<path:item_style>/edit', methods=['GET','POST'])
+def edit_item(category_name, item_style):
+
+    category = session.query(Category).filter_by(name=category_name).one_or_none()
+    item = session.query(Item).filter_by(style = item_style).one_or_none()
+
+    if request.method == 'POST':
+        if request.form['style']:
+            item.style = request.form['style'].strip()
+        if request.form['description']:
+            item.description = request.form['description'].strip()
+
+        session.add(item)
+        session.commit()
+        return redirect('/catalog')
+    else:
+        return render_template('edit_item.html', category = category, item = item)
+
+
