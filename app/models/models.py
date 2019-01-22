@@ -12,15 +12,11 @@ class Category(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(250), nullable=False)
     description = Column(String(250), nullable=False)
-    
-    # def __init__( self, id, name, description):
-    #    self.name = name
-    #    self.id = id
-    #    self.description = description
        
 
     @property
     def serialize(self):
+    """Return object data in easily serializeable format."""
         return{
             'id': self.id,
             'name': self.name,
@@ -38,12 +34,6 @@ class Item(Base):
     style = Column(String(250), nullable=False)
     description = Column(String(250), nullable=False)
 
-    # @classmethod
-    # def __repr__(self):
-    #     return ("<Item: id={:d}, style='{}',"
-    #             " category_id={:d}>".format(
-    #                 self.id, self.style, 
-    #                 self.category_id))
 
     @property
     def serialize(self):
@@ -60,4 +50,16 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
-    email = Column(String(250), nullable=False)
+    email = Column(String(250), nullable=False, unique=True)
+
+    def __init__(self, name, email):
+    self.name = name
+    self.email = email
+
+    @property
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "email": self.email
+        }
