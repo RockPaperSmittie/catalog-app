@@ -16,7 +16,6 @@ class Category(Base):
 
     @property
     def serialize(self):
-    """Return object data in easily serializeable format."""
         return{
             'id': self.id,
             'name': self.name,
@@ -53,8 +52,8 @@ class User(Base):
     email = Column(String(250), nullable=False, unique=True)
 
     def __init__(self, name, email):
-    self.name = name
-    self.email = email
+        self.name = name
+        self.email = email
 
     @property
     def serialize(self):

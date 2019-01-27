@@ -5,7 +5,7 @@ from flask import render_template, url_for
 from flask import session as login_session
 from oauth2client.client import flow_from_clientsecrets
 from oauth2client.client import FlowExchangeError
-from app.views import views
+import views.user as user
 import httplib2
 import json
 import requests
