@@ -8,7 +8,7 @@ def create_user(login_session):
     """Create a new user from login session and return his id."""
     newUser = User(name=login_session["username"],
                    email=login_session["email"],
-                   picture=login_session["picture"])
+                   )
     session.add(newUser)
     session.commit()
     user = session.query(User).filter_by(email=login_session["email"]).one_or_none()

@@ -27,10 +27,17 @@
           <li><a href="{{url_for('category.show_categories')}}">Categories</a></li>
           <li><a href="#">About</a></li>
         </ul>
-        <ul class="nav navbar navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
+        <form class="form-inline my-2 my-lg-0">
+            {% if 'username' not in session %}
+              <a href="{{url_for('auth.show_login')}}" class="btn btn-danger">Login</a>
+            {% else %}
+              <a href="#" data-toggle="popover" data-trigger="focus" 
+                title="Authentication" 
+                data-content="{{ session['username'] }} ({{ session['email'] }})">
+              </a>
+              <a href="{{url_for('auth.disconnect')}}" class="btn btn-danger">Logout</a>
+            {% endif %}
+          </form>
       </div>
     </nav>
 
@@ -67,6 +74,9 @@
     <script>
       // Get the current year for the copyright
       $('#year').text(new Date().getFullYear());
+      $(function() {
+        $('[data-toggle="popover"]').popover()
+      });
     </script>
   </body>
 </html>
