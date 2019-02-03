@@ -1,11 +1,22 @@
 from flask import Blueprint, render_template, request, redirect
+from flask import session as login_session
 from sqlalchemy import asc, desc
 from app.models.models import Category
 from app.models.models import Item
 from app import session
+from functools import wraps
 # from app.forms import NewItemForm
 
 item = Blueprint('item', __name__)
+
+def login_required(f):
+    """Decorator to redirect user if not logged."""
+    @wraps(f)
+    def wrapper(*args, **kwds):
+        if "username" not in login_session:
+            return redirect("/login")
+        return f(*args, **kwds)
+    return wrapper
 
 @item.route("/catalog/<path:category_name>")
 @item.route("/catalog/<path:category_name>/items")
@@ -26,6 +37,7 @@ def show_item(category_name, item_style):
 
 
 @item.route('/catalog/<path:category_name>/items/new', methods=['GET', 'POST'])
+@login_required
 def new_item(category_name):
     '''
     GET: Display Add Form
@@ -49,6 +61,7 @@ def new_item(category_name):
         return render_template('new_item.html', category=category)
 
 @item.route('/catalog/<path:category_name>/<path:item_style>/edit', methods=['GET','POST'])
+@login_required
 def edit_item(category_name, item_style):
 
     category = session.query(Category).filter_by(name=category_name).one_or_none()
@@ -67,6 +80,7 @@ def edit_item(category_name, item_style):
         return render_template('edit_item.html', category = category, item = item)
 
 @item.route('/catalog/<path:category_name>/<path:item_style>/delete', methods=['GET','POST'])
+@login_required
 def delete_item(category_name, item_style):
 
     category = session.query(Category).filter_by(name=category_name).one_or_none()
