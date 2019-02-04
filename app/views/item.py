@@ -1,11 +1,11 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, flash, url_for
 from flask import session as login_session
-from sqlalchemy import asc, desc
+from sqlalchemy import asc, desc, exc
 from app.models.models import Category
 from app.models.models import Item
 from app import session
 from functools import wraps
-# from app.forms import NewItemForm
+
 
 item = Blueprint('item', __name__)
 
@@ -47,16 +47,26 @@ def new_item(category_name):
     
 
     if request.method == 'POST':
+        newItem=Item()
         style = request.form['style'].strip()
         description = request.form['description'].strip()
-
-        newItem = Item(style=style, description=description, category = category )
-
-        session.add(newItem)
-        session.commit()
-        print("session committed!")
-
-        return redirect('/catalog')
+        newItem = Item(style=style, description=description, category = category, 
+        user_id=login_session['user_id'])
+        
+        try:
+            item = session.query(Item).filter_by(category=category, style=style).one_or_none()
+            session.add(newItem)
+            session.commit()
+            flash("Item '{}' Successfully Added".format(newItem.style), "success")
+            return redirect('/catalog')
+        except exc.SQLAlchemyError:
+                session.rollback()
+                flash(
+                    "You can not add this item since another item already "
+                    " exists in the database with the same title and category.",
+                    "warning")
+                return redirect(url_for(
+                "item.new_item", category_name=category.name))
     else:
         return render_template('new_item.html', category=category)
 
@@ -72,9 +82,9 @@ def edit_item(category_name, item_style):
             item.style = request.form['style'].strip()
         if request.form['description']:
             item.description = request.form['description'].strip()
-
         session.add(item)
         session.commit()
+        flash("Item '{}' Successfully Edited".format(item.style), "success")
         return redirect('/catalog')
     else:
         return render_template('edit_item.html', category = category, item = item)
