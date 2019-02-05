@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- encoding: utf-8 -*-
 from datetime import datetime
 from sqlalchemy import Column, ForeignKey, Integer, String, DateTime
 from sqlalchemy.orm import relationship, backref
@@ -31,8 +33,12 @@ class Category(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(250), nullable=False)
     description = Column(String(250), nullable=False)
-       
 
+    # def __repr__(self):
+    #     return ("<Category: id={:d}, name='{}'"
+    #             " description={}>".format(
+    #                 self.id, self.name, self.description))
+       
     @property
     def serialize(self):
         return{
@@ -51,14 +57,19 @@ class Item(Base):
     style = Column(String(250), nullable=False, unique=True)
     description = Column(String(250), nullable=False)
     user_id = Column(Integer, ForeignKey("user.id"))
-    user = relationship(User)   
+    user = relationship(User)
+    
+    def __repr__(self):
+        return ("<Item: id={:d}, style='{}'"
+                " category_id={:d}, user_id={:d}>".format(
+                    self.id, self.style, self.category_id, self.user_id))   
 
 
     @property
     def serialize(self):
         return{
             'id' : self.id,
-            'category' : self.category,
+            'category_id' : self.category_id,
             'style' : self.style,
             'description' : self.description,
             'user_id': self.user_id
