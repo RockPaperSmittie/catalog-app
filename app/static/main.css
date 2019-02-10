@@ -1,11 +1,22 @@
 .jumbotron {
   vertical-align: middle;
   height: 400px;
-  background-image: url("jumbo_img.jpg");
+  background-image: url("jumbo2.jpg");
   background-size: cover;
   background-position: center;
   display: block;
 
+}
+
+nav.navbar.navbar-default {
+  border-bottom: black transparent 1px;
+  box-shadow: 1px 2px 2px #888888;
+  align-content: left;
+  background-color: white;
+}
+
+div.container-fluid{
+  justify-content: center;
 }
 
 a.navbar-brand {
@@ -13,26 +24,26 @@ a.navbar-brand {
 }
 
 ul.nav.navbar {
-  align-content: left;
-  justify-content: left;
-  display: flex;
+ margin-left: 790px;
 }
 
 
 li.nav-item {
-  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1.5rem;
-  justify-content: left;
+  border-right: black solid 1px;
+  justify-content: center;
+
 }
 
-.jumbo-text {
-  color: red;
-  text-align: center;
-  vertical-align: middle;
+form.form-inline.my-2.my-lg-0{
+  font-size: 1.5rem;
+  padding-left: 1px;
 }
 
 .jumbo-content {
-    position: absolute;
+    position: relative;
     left: 50%;
     top: 50%;
     bottom: auto;
@@ -43,9 +54,13 @@ li.nav-item {
     -o-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
     text-align: center;
-    width: 100%;
+    width: 25%;
     text-shadow: 0 1px 3px rgba(255, 255, 255, 0.856);
     border: black solid 2px;
+    display: inline-flex;
+    justify-content: center;
+    box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
 }
 
 .col-sm-4 {
@@ -53,6 +68,10 @@ li.nav-item {
   min-width: 60px;
   padding: 7px;
   border: black, 10px, solid
+}
+
+.col-sm-4:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 button.col-sm-4 {
@@ -64,6 +83,7 @@ button.col-sm-4 {
 
 a.cat-link{
   display: block;
+  font-size: 1.5rem
 }
 
 a.cat-link:hover{
@@ -84,28 +104,67 @@ h3.cat-head {
   text-align: center;
 }
 
-h3.cat-head:hover{
-  color: red;
-}
-
 a {
   color: black;
-  text-shadow: 0 1px 3px rgba(176, 246, 255, 0.856);
 }
 
-a:hover {
-  text-shadow: 0 6px 15px rgba(35, 39, 39, 0.856);
-  color: black;
-}
 
 .container-fluid {
-  justify-content: center;
-  align-content: center;
-  align-items: center;
   text-align: center;
 }
 
 a.btn.btn-info{
-  padding: 2px;
+  padding: 4px;
+  margin: 4px;
+}
+
+a.btn.btn-info:hover{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+section.item-info {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+p.item-desc {
+  border: black solid 1px;
+  display: inline-flex;
+  box-sizing: content-box;
+  padding: 4rem;
+  margin: 2rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+
+.login-box {
+  text-align: center;
+  padding: 40px;
+}
+
+#SignInButton {
+  text-align: center;
+}
+
+.login-page {
+  border: black solid 1px;
+  margin-inline-start: 500px;
+  margin-inline-end: 500px;
+  padding: 20px;
+  margin-top: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 1.5rem;
+}
+
+.login {
+  background-image: url('login.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.row {
+  text-align: center;
+  margin-top: 40px;
+  
 }
 

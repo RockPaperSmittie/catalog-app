@@ -5,20 +5,26 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="//apis.google.com/js/platform.js?onload=start"> </script>
     </head> 
-    <body>
-        <div id="signInButton">
-            <span class="g-signin" 
-                    data-scope="openid email"
-                    data-clientid="759360808940-631pr3lc5o998p8r8rkrb5gujt5gjm9n.apps.googleusercontent.com"
-                    data-redirecturi="postmessage"
-                    data-accesstype="offline"
-                    data-cookiepolicy="single_host_origin"
-                    data-callback="signInCallback"
-                    data-approvalprompt="force">
-            </span>
-        </div>
-            
-        <div id="result"></div>
+    <body class= "login">
+        <section class= "login-page">
+            <div class= "login-box">
+                <h1>User Login</h1>
+                <p>Please login using the following options:</p>
+            </div>
+            <div id="signInButton">
+                <span class="g-signin" 
+                        data-scope="openid email"
+                        data-clientid="759360808940-631pr3lc5o998p8r8rkrb5gujt5gjm9n.apps.googleusercontent.com"
+                        data-redirecturi="postmessage"
+                        data-accesstype="offline"
+                        data-cookiepolicy="single_host_origin"
+                        data-callback="signInCallback"
+                        data-approvalprompt="force">
+                </span>
+            </div>
+                
+            <div id="result"></div>
+        </section>
             
             <script>
             function signInCallback(authResult) {
