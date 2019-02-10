@@ -2,17 +2,17 @@
 {% block content %}
 {% include "partials/navbar.html" %}
 
-<div class="container" style="background-color:rgb(203, 245, 255);">
+<div class="delete-page">
 	<div class="row">
 		<div class="col-md-12">
             <h1>Delete Item</h1>
                 <h2>Do you really want to delete {{item.style}}?</h2>
-                <form action="#" method = 'post'>
-                        <button type="submit" class="btn btn-default delete" id="submit" type="submit">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button>
+                <form class= "delete-cancel" action="#" method = 'post'>
+                        <button type="submit" class="btn btn-info" id="submit" type="submit">
+                        <span aria-hidden="true"></span>Delete</button>
                         <a href = "{{url_for('item.show_item', category_name=category.name, item_style=item.style)}}">
-                            <button class="btn btn-default delete">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+                            <button class="btn btn-info">
+                            <span aria-hidden="true"></span> Cancel</button>
                         </a>
                     </form>
                 </div>

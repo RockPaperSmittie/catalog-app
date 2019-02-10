@@ -24,7 +24,7 @@ a.navbar-brand {
 }
 
 ul.nav.navbar {
- margin-left: 790px;
+ margin-left: 890px;
 }
 
 
@@ -90,10 +90,6 @@ a.cat-link:hover{
   text-shadow: 0 3px 9px rgba(78, 87, 87, 0.856);
 }
 
-div.row {
-  align-content: center;
-}
-
 section.container .row {
   align-items: center;
   justify-content: center;
@@ -139,7 +135,7 @@ p.item-desc {
 
 .login-box {
   text-align: center;
-  padding: 40px;
+  padding-bottom: 2px;
 }
 
 #SignInButton {
@@ -164,7 +160,18 @@ p.item-desc {
 
 div.row {
   text-align: center;
-  margin-top: 40px;
-  
+  margin-top: -15px;
 }
 
+div.delete-page {
+  padding: 10px
+}
+
+form.delete-cancel {
+  padding: 10px;
+}
+
+button.fb-login {
+  margin-left: 120px;
+  margin-bottom: 15px;
+}

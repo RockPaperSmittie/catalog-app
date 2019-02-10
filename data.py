@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from loremipsum import get_sentences
 from app import session, create_tables
 
-lorem = str((get_sentences(1)))
+lorem = str((get_sentences(1))).strip('[]u')
 
 create_tables()
 

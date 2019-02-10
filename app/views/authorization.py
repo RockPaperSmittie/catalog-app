@@ -211,7 +211,6 @@ def fbconnect():
     result = h.request(url, "GET")[1]
     data = json.loads(result)
 
-    login_session["picture"] = data["data"]["url"]
 
     # See if user exists.
     user_id = user.get_user_id(login_session["email"])
@@ -221,13 +220,6 @@ def fbconnect():
 
     output = "<h1>Welcome, "
     output += login_session["username"]
-
-    output += "!</h1>"
-    output += '<img src="'
-    output += login_session["picture"]
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;'
-    output += ' -webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
-
     flash("Now logged in as {}.".format(login_session["username"]), "success")
     return output
 
@@ -237,7 +229,7 @@ def fbdisconnect():
     """Facebook disconnect."""
     facebook_id = login_session["facebook_id"]
 
-    # The access token must me included to successfully logout.
+    # The access token must be included to successfully logout.
     access_token = login_session["access_token"]
     url = "https://graph.facebook.com/{}/permissions?access_token={}".format(
             facebook_id, access_token)
@@ -263,7 +255,6 @@ def disconnect():
 
         delete_key_login_session("username")
         delete_key_login_session("email")
-        delete_key_login_session("picture")
         delete_key_login_session("user_id")
         delete_key_login_session("provider")
         flash("You have successfully been logged out.", "success")

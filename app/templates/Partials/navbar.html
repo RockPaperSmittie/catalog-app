@@ -16,30 +16,28 @@
         <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='main.css') }}">
 
         <title>
-            Catalog App
-        </title>
-    </head>
-    <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
+                <h1>Catalog App</h1>
+              </title>
+            </head>
+            <body>
+              <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                  <div class="navbar-header">
                     <a class="navbar-brand" href="{{url_for('category.show_categories')}}"><h3>Catalog App</h3></a>
-                </div>
-                <ul class="nav navbar">
+                  </div>
+                  <ul class="nav navbar">
                     <li class= "nav-item"><a href="{{url_for('category.show_categories')}}">Categories</a></li>
-                    <li class= "nav-item"><a href="#">About</a></li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    {% if 'username' not in session %}
-                    <a href="{{url_for('auth.show_login')}}"><span class="fas fa-sign-in-alt"></span>Login</a>
-                    {% else %}
-                    <a href="#" data-toggle="popover" data-trigger="focus" 
-                        title="Authentication" 
-                        data-content="{{ session['username'] }} ({{ session['email'] }})">
-                    </a>
-                    <a href="{{url_for('auth.disconnect')}}" class="glyphicon glyphicon-log-out">Logout</a>
-                    {% endif %}
-                </form>
-            </div>
-        </nav>
-    </body>
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                      {% if 'username' not in session %}
+                        <a href="{{url_for('auth.show_login')}}"><span class="fas fa-sign-in-alt"></span>SignIn</a>
+                      {% else %}
+                        <a href="#" data-toggle="popover" data-trigger="focus" 
+                          title="Authentication" 
+                          data-content="{{ session['username'] }} ({{ session['email'] }})">
+                        </a>
+                        <a href="{{url_for('auth.disconnect')}}"><span class="fas fa-sign-out-alt"></span>SignOut</a>
+                      {% endif %}
+                    </form>
+                </div>
+              </nav>

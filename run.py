@@ -3,6 +3,7 @@ from flask import Flask
 from app.views.category import category
 from app.views.item import item
 from app.views.authorization import auth
+from app.views.api import api
 # from views.api import api
 
 app = Flask(__name__, template_folder='app/templates')
@@ -13,7 +14,7 @@ app._static_folder = "app/static"
 app.register_blueprint(category)
 app.register_blueprint(item)
 app.register_blueprint(auth)
-# app.register_blueprint(api)
+app.register_blueprint(api)
 
 
 if __name__ == "__main__":

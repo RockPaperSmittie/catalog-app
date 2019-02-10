@@ -3,7 +3,7 @@
 {% include "partials/head.html" %}
 {% include "partials/navbar.html" %}
 
-<div class="container" style="background-color:#FFF;">
+<div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<h2>Create New Item</h2>
@@ -31,7 +31,7 @@
 					<br>
 					<button type="submit" class="btn btn-info" id="submit" type="submit">
 					<span  aria-hidden="true"></span>Save</button>
-					<a  class= "btn btn-info" href = "{{url_for('category.show_categories')}}">Cancel</a>
+					<a  class= "btn btn-default" href = "{{url_for('category.show_categories')}}">Cancel</a>
 		</div>
 			</form>
 			

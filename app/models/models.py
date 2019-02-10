@@ -17,6 +17,10 @@ class User(Base):
     def __init__(self, name, email):
         self.name = name
         self.email = email
+    
+    def __repr__(self):
+        return ("<User: id={:d}, name='{}', email='{}'>".format(
+                self.id, self.name, self.email))
 
     @property
     def serialize(self):
