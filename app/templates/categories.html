@@ -19,9 +19,9 @@
         {% if categories %}
             <div class="row">
                 {% for c in categories %}
-                    <h2 class="col-sm-4">
-                      <a href ="{{url_for('item.show_items', category_name=c.name)}}">{{c.name}}</a>
-                    </h2>
+                    <button class="col-sm-4">
+                      <a class= cat-link href ="{{url_for('item.show_items', category_name=c.name)}}">{{c.name}}</a>
+                    </button>
 
                 {% endfor %}
             </div>

@@ -1,173 +1,111 @@
-body {
-  font-family: 'Roboto', sans-serif;
+.jumbotron {
+  vertical-align: middle;
+  height: 400px;
+  background-image: url("jumbo_img.jpg");
+  background-size: cover;
+  background-position: center;
+  display: block;
+
 }
 
-a, a:hover {
-  color: #000000;
+a.navbar-brand {
+  color: black;
 }
 
-ul {
-  list-style: none;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: inline-block;
-  color: #00d4fac7;
-  text-align: center;
-  padding: 5px 7px;
-  text-decoration: none;
-}
-
-.cat-head {
-  text-align: center;
-}
-
-li a:hover {
-  background-color: #111;
-}
-
-figure img {
-  width: 100%;
-  height: auto;
-}
-
-figure {
-  margin-bottom: 30px;
-}
-
-header nav {
+ul.nav.navbar {
+  align-content: left;
+  justify-content: left;
   display: flex;
-  justify-content: flex-end;
 }
 
-div > h1, .site-name {
-  font-size: 2.5rem;
+
+li.nav-item {
+  padding: 10px;
+  font-size: 1.5rem;
+  justify-content: left;
 }
 
-nav > p {
-  cursor: pointer;
-}
-.pill-black, .pill-white {
-  border: 0.5px solid;
-  border-radius: 5px;
+.jumbo-text {
+  color: red;
   text-align: center;
+  vertical-align: middle;
 }
 
-.pill-black {
-  background-color: #000000;
-  color: #FFFFFF;
-}
-
-footer {
-  margin-top: 20px;
-}
-
-footer div {
-  display: flex;
-  align-items: center;
-}
-
-/* Customizations of Bootstrap classes */
-
-header .row {
-  display: flex;
-  align-items: center;
+.jumbo-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    right: auto;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+    width: 100%;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.856);
+    border: black solid 2px;
 }
 
 .col-sm-4 {
   margin: 25px 20px 15px;
   min-width: 60px;
-  padding: 3px;
-  border: black, 2px, solid
+  padding: 7px;
+  border: black, 10px, solid
 }
 
-.item-desc {
+button.col-sm-4 {
+  background-color: white;
+  border: black solid 2px;
+  color: white;
   text-align: center;
-  padding: 100px;
+}
+
+a.cat-link{
+  display: block;
+}
+
+a.cat-link:hover{
+  text-shadow: 0 3px 9px rgba(78, 87, 87, 0.856);
+}
+
+div.row {
+  align-content: center;
 }
 
 section.container .row {
-  display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
 
-.jumbotron {
-  display: flex;
-  align-items: center;
-  height: 400px;
-  background-image: url("https://s3.amazonaws.com/codecademy-content/projects/make-a-website/lesson-4/buildawebsite.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.jumbotron h2 {
-  background-color: rgb(255, 255, 255);
-  display: inline-block;
-  color: rgba(41, 194, 240, 0.5);
-  font-weight: 700;
-  padding: 10px 35px;
-  border-radius: 5px;
+h3.cat-head {
   justify-content: center;
+  text-align: center;
+}
+
+h3.cat-head:hover{
+  color: red;
+}
+
+a {
+  color: black;
+  text-shadow: 0 1px 3px rgba(176, 246, 255, 0.856);
+}
+
+a:hover {
+  text-shadow: 0 6px 15px rgba(35, 39, 39, 0.856);
+  color: black;
+}
+
+.container-fluid {
+  justify-content: center;
+  align-content: center;
   align-items: center;
-}
-
-.jumbotron h3 {
-  color: #FFFFFF;
-  font-weight: bold;
-}
-
-.btn-primary {
-  color: #2e6da4;
-  background-color: #FFFFFF;
-}
-
-.col-sm-1 img {
-  float: right;
-  min-width: 32px;
-  min-height: 33px;
-}
-
-/* Bootstrap overrides */
-
-.row {
   text-align: center;
 }
 
-.container {
-  display: center;
+a.btn.btn-info{
+  padding: 2px;
 }
 
-.left{
-  justify-content: left;
-}
-
-.navbar, .navbar-default {
-  margin: 0;
-  background-color: #FFFFFF;
-  border: none;
-  text-align: center;
-  /* display: inline-flex */
-}
-
-.btn-default,
-.btn-default:hover,
-.btn-default:active {
-  border: none;
-  background: #FFFFFF;
-} */
-
-.dropdown-menu {
-  left: 22px;
-}
-
-/* Bootstrap Overrides : modal */
-
-.modal h3, .modal-body h4 {
-  text-align: center;
-}
