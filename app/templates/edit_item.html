@@ -1,5 +1,4 @@
 {% block content %}
-{% include "partials/head.html" %}
 {% include "partials/navbar.html" %}
 
 <div class="container">
@@ -10,18 +9,15 @@
 				<div class="form-group">
 					<label for="style">Name:</label>
 					<input type ="text" maxlength="100" class="form-control" name="style" value="">
-
 					<label for="description">Description:</label>
 					<textarea class="form-control" maxlength="250" rows="3" name="description"></textarea>
-
-					</div>
-					<br>
-					<button type="submit" class="btn btn-info" id="submit" type="submit">
-					<span aria-hidden="true"></span>Save</button>
-					<a class= "btn btn-default" href = "{{url_for('category.show_categories')}}">Cancel</a>
 				</div>
+				<br>
+				<button type="submit" class="btn btn-info" id="submit" type="submit">
+				<span aria-hidden="true"></span>Save</button>
+				<a class= "btn btn-default" href = "{{url_for('category.show_categories')}}">Cancel</a>
 			</form>
 		</div>
-		</div>
 	</div>
+</div>
 {% endblock %}

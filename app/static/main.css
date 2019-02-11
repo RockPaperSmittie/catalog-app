@@ -5,7 +5,6 @@
   background-size: cover;
   background-position: center;
   display: block;
-
 }
 
 nav.navbar.navbar-default {
@@ -13,6 +12,10 @@ nav.navbar.navbar-default {
   box-shadow: 1px 2px 2px #888888;
   align-content: left;
   background-color: white;
+}
+
+div.container{
+  margin-top: 40px;
 }
 
 div.container-fluid{
@@ -24,9 +27,8 @@ a.navbar-brand {
 }
 
 ul.nav.navbar {
- margin-left: 890px;
+ margin-left: 870px;
 }
-
 
 li.nav-item {
   padding-left: 20px;
@@ -34,7 +36,6 @@ li.nav-item {
   font-size: 1.5rem;
   border-right: black solid 1px;
   justify-content: center;
-
 }
 
 form.form-inline.my-2.my-lg-0{
@@ -60,7 +61,6 @@ form.form-inline.my-2.my-lg-0{
     display: inline-flex;
     justify-content: center;
     box-shadow: 0 6px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  
 }
 
 .col-sm-4 {
@@ -103,7 +103,6 @@ h3.cat-head {
 a {
   color: black;
 }
-
 
 .container-fluid {
   text-align: center;

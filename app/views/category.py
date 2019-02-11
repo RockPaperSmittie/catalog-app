@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- encoding: utf-8 -*-
 from flask import Blueprint, render_template
 from sqlalchemy import asc, desc
 from app.models.models import Category

@@ -211,7 +211,6 @@ def fbconnect():
     result = h.request(url, "GET")[1]
     data = json.loads(result)
 
-
     # See if user exists.
     user_id = user.get_user_id(login_session["email"])
     if not user_id:
