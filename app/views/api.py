@@ -37,7 +37,8 @@ def get_category(category_name):
 
 
 @api.route(
-    "/item/<path:category_name>/<path:item_style>.json", methods=["GET"])
+    "/item/<path:category_name>/itemstyle/<path:item_style>.json",
+    methods=["GET"])
 def get_item(category_name, item_style):
     """Return a specific item."""
     category = session.query(Category).filter_by(

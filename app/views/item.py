@@ -21,6 +21,42 @@ def login_required(f):
     return wrapper
 
 
+def owner_permission(f):
+    """Decorator to make sure the user owns an item
+       before allowing them to edit or delete it.
+    """
+    @wraps(f)
+    def wrapper(*args, **kwds):
+        category_name = kwds["category_name"]
+        item_style = kwds["item_style"]
+
+        # Redirect user if category or item does not exist.
+        category = session.query(Category).filter_by(
+            name=category_name).one_or_none()
+        if not category:
+            flash("An error occurred. Please try again.", "warning")
+            return redirect("/catalog")
+
+        item = session.query(Item).filter_by(
+            category_id=category.id, style=item_style).one_or_none()
+        if not item:
+            flash("An error occurred. Please try again.", "warning")
+            return redirect("/catalog/{}/items".format(category_name))
+
+        # Make sure the user owns an item before allowing them to edit
+        # or delete it.
+        if "username" not in login_session\
+                or "user_id" in login_session\
+                and item.user_id != login_session["user_id"]:
+            flash("You are not allowed to edit or delete this item. "
+                  "It belongs to {}.".format(item.user.name), "warning")
+            return render_template("show_item.html", item=item)
+
+        kwds['item'] = item
+        return f(*args, **kwds)
+    return wrapper
+
+
 @item.route("/catalog/<path:category_name>")
 @item.route("/catalog/<path:category_name>/items")
 def show_items(category_name):
@@ -56,11 +92,20 @@ def new_item(category_name):
 
     if request.method == 'POST':
         newItem = Item()
-        style = request.form['style'].strip()
-        description = request.form['description'].strip()
-        newItem = Item(
-            style=style, description=description,
-            category=category, user_id=login_session['user_id'])
+        if request.form['style']:
+            style = request.form['style'].strip()
+        if request.form['description']:
+            description = request.form['description'].strip()
+        try:
+            newItem = Item(
+                style=style, description=description,
+                category=category, user_id=login_session['user_id'])
+        except UnboundLocalError:
+            session.rollback()
+            flash("You can not add an item without "
+                  " a name and/or description.")
+            return redirect(
+                url_for("item.new_item", category_name=category.name))
         try:
             item = session.query(Item).filter_by(
                 category=category, style=style).one_or_none()
@@ -70,13 +115,13 @@ def new_item(category_name):
                 newItem.style), "success")
             return redirect('/catalog')
         except exc.SQLAlchemyError:
-                session.rollback()
-                flash(
-                    "You can not add this item since another item already "
-                    " exists in the database with the same"
-                    " style and category.")
-                return redirect(
-                    url_for("item.new_item", category_name=category.name))
+            session.rollback()
+            flash(
+                "You can not add this item since another item already "
+                " exists in the database with the same"
+                " style and category.")
+            return redirect(
+                url_for("item.new_item", category_name=category.name))
     else:
         return render_template('new_item.html', category=category)
 
@@ -85,6 +130,7 @@ def new_item(category_name):
     '/catalog/<path:category_name>/<path:item_style>/edit',
     methods=['GET', 'POST'])
 @login_required
+@owner_permission
 def edit_item(category_name, item_style):
     category = session.query(
         Category).filter_by(name=category_name).one_or_none()
@@ -106,6 +152,7 @@ def edit_item(category_name, item_style):
     '/catalog/<path:category_name>/<path:item_style>/delete',
     methods=['GET', 'POST'])
 @login_required
+@owner_permission
 def delete_item(category_name, item_style):
     category = session.query(
         Category).filter_by(name=category_name).one_or_none()

@@ -21,4 +21,4 @@ app.register_blueprint(api)
 
 if __name__ == "__main__":
     app.secret_key = "super_secret_key"
-    app.run(host="0.0.0.0", port=8080, threaded=False)
+    app.run(host="0.0.0.0", port=8080, debug=True, threaded=False)
