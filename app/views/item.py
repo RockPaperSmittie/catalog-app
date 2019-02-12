@@ -48,11 +48,11 @@ def owner_permission(f):
         if "username" not in login_session\
                 or "user_id" in login_session\
                 and item.user_id != login_session["user_id"]:
-            flash("You are not allowed to edit or delete this item. "
-                  "It belongs to {}.".format(item.user.name), "warning")
-            return render_template("show_item.html", item=item)
+            flash("You are not the owner of this item. "
+                  "You do not have permission to edit/delete.")
+            return render_template('edit_item.html', category=category, item=item)
 
-        kwds['item'] = item
+        kwds['item_style'] = item_style
         return f(*args, **kwds)
     return wrapper
 
