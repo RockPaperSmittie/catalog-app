@@ -3,6 +3,18 @@
 
 <section class="container">
         <h3 class = 'cat-head'>{{category.name}}</h3>
+        {% with messages = get_flashed_messages() %}
+			{% if messages %}
+			  {% for message in messages %}
+				<div class="alert alert-warning alert-dismissible fade show" role="alert" style="margin-top: 1rem;">
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				  {{ message }}
+				</div>
+				{% endfor %}
+			  {% endif %}
+			{% endwith %}
             <div class="row">
                 {% for i in items %}
                     <button class="col-sm-4">

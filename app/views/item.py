@@ -50,8 +50,7 @@ def owner_permission(f):
                 and item.user_id != login_session["user_id"]:
             flash("You are not the owner of this item. "
                   "You do not have permission to edit/delete.")
-            return render_template(
-                'edit_item.html', category=category, item=item)
+            return redirect("/catalog/{}/items".format(category_name))
 
         kwds['item_style'] = item_style
         return f(*args, **kwds)
