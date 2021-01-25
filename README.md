@@ -2,6 +2,7 @@
 
 This application provides a catalog of clothing items which are sorted in different categories.
 The application was made to fulfill the requirements of a project in Udacity's Fullstack Nanodegree course. 
+#### Please note that this is an old project that was created when first learning the basics of software development.
 
 ## Aims
 
