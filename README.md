@@ -46,12 +46,6 @@ Once logged into your virtual machine, follow the steps below to run the applica
 
 4. The application can now be accessed through your browser at the following URL: http://localhost:8080
 
-## Screenshot
-
-This is what the app should look like upon visting http://localhost:8080.
-
-![screen](ScreenShot.png)
-
 ## API endpoints
 
 | Request | Result |
